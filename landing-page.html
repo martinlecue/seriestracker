@@ -259,7 +259,7 @@ footer nav { display: flex; gap: 24px; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ── HIDDEN LANG ── */
-[data-lang] { display: none; }
+[data-en] { display: none; }
 </style>
 </head>
 <body>
@@ -513,14 +513,20 @@ footer nav { display: flex; gap: 24px; }
 // ── LANG SWITCHER ──
 function setLang(lang) {
   document.documentElement.lang = lang;
-  document.querySelectorAll('[data-fr]').forEach(el => el.style.display = lang === 'fr' ? '' : 'none');
-  document.querySelectorAll('[data-en]').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    el.style.display = lang === 'fr' ? '' : 'none';
+  });
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.style.display = lang === 'en' ? '' : 'none';
+  });
+
   document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
   localStorage.setItem('lang', lang);
 }
 
-// Init
+// Init — FR par défaut
 const savedLang = localStorage.getItem('lang') || 'fr';
 setLang(savedLang);
 
