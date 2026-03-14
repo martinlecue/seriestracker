@@ -20,21 +20,14 @@
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
-
 body {
-  background: var(--ink);
-  color: var(--white);
+  background: var(--ink); color: var(--white);
   font-family: 'DM Sans', sans-serif;
-  overflow-x: hidden;
-  cursor: default;
+  overflow-x: hidden; cursor: default;
 }
-
-/* ── NOISE OVERLAY ── */
 body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 0;
+  content: ''; position: fixed; inset: 0; z-index: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
 }
@@ -53,6 +46,7 @@ nav {
   background: linear-gradient(135deg, var(--white), var(--purple-light));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
+.nav-right { display: flex; align-items: center; gap: 16px; }
 .nav-cta {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--purple); color: white;
@@ -63,6 +57,25 @@ nav {
 .nav-cta:hover { background: #6D28D9; transform: translateY(-1px); }
 .nav-cta svg { width: 16px; height: 16px; }
 
+/* ── LANG SWITCHER ── */
+.lang-switcher {
+  display: flex; align-items: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 100px; overflow: hidden;
+  font-size: 13px; font-weight: 600;
+}
+.lang-btn {
+  padding: 7px 14px; cursor: pointer;
+  transition: all 0.2s; color: var(--muted);
+  border: none; background: none; font-family: inherit;
+  font-size: 13px; font-weight: 600;
+}
+.lang-btn.active {
+  background: var(--purple); color: white; border-radius: 100px;
+}
+.lang-btn:hover:not(.active) { color: var(--white); }
+
 /* ── HERO ── */
 .hero {
   position: relative; min-height: 100vh;
@@ -71,7 +84,6 @@ nav {
   text-align: center; padding: 120px 24px 80px;
   overflow: hidden;
 }
-
 .hero-glow {
   position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
   width: 800px; height: 800px; border-radius: 50%;
@@ -84,7 +96,6 @@ nav {
   background: radial-gradient(circle, rgba(245,200,66,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
-
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   border: 1px solid rgba(124,58,237,0.4);
@@ -96,7 +107,6 @@ nav {
   animation: fadeUp 0.8s ease both;
 }
 .dot { width: 6px; height: 6px; background: var(--purple-light); border-radius: 50%; animation: pulse 2s infinite; }
-
 .hero h1 {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(48px, 8vw, 96px);
@@ -109,14 +119,11 @@ nav {
   background: linear-gradient(135deg, var(--purple-light), var(--gold));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-
 .hero-sub {
   font-size: clamp(16px, 2vw, 20px); color: var(--muted);
-  max-width: 520px; line-height: 1.7; margin-bottom: 48px;
-  font-weight: 300;
+  max-width: 520px; line-height: 1.7; margin-bottom: 48px; font-weight: 300;
   animation: fadeUp 0.8s 0.2s ease both;
 }
-
 .hero-actions {
   display: flex; gap: 16px; align-items: center; flex-wrap: wrap; justify-content: center;
   animation: fadeUp 0.8s 0.3s ease both;
@@ -131,8 +138,7 @@ nav {
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(124,58,237,0.6); background: #6D28D9; }
 .btn-secondary {
   color: var(--muted); font-size: 15px; text-decoration: none;
-  display: inline-flex; align-items: center; gap: 6px;
-  transition: color 0.2s;
+  display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;
 }
 .btn-secondary:hover { color: var(--white); }
 
@@ -147,10 +153,7 @@ nav {
   overflow: hidden; margin: 0 auto;
   box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05);
 }
-.mockup-notch {
-  width: 120px; height: 34px; background: var(--ink);
-  border-radius: 0 0 20px 20px; margin: 0 auto 16px;
-}
+.mockup-notch { width: 120px; height: 34px; background: var(--ink); border-radius: 0 0 20px 20px; margin: 0 auto 16px; }
 .mockup-content { padding: 0 16px 32px; }
 .mockup-title { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 16px; }
 .mockup-card {
@@ -159,37 +162,21 @@ nav {
   display: flex; align-items: center; gap: 12px;
   border: 1px solid rgba(255,255,255,0.06);
 }
-.mockup-poster {
-  width: 40px; height: 60px; border-radius: 8px;
-  flex-shrink: 0;
-}
+.mockup-poster { width: 40px; height: 60px; border-radius: 8px; flex-shrink: 0; }
 .mockup-info { flex: 1; min-width: 0; }
 .mockup-series-title { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mockup-ep { font-size: 11px; color: var(--muted); font-family: monospace; margin-top: 3px; }
-.mockup-tag {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
-  padding: 3px 8px; border-radius: 6px; margin-top: 5px;
-  display: inline-block;
-}
+.mockup-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 6px; margin-top: 5px; display: inline-block; }
 .tag-green { background: rgba(34,197,94,0.15); color: #4ade80; }
 .tag-purple { background: rgba(124,58,237,0.2); color: var(--purple-light); }
 .tag-orange { background: rgba(249,115,22,0.15); color: #fb923c; }
 
 /* ── FEATURES ── */
 .features { padding: 120px 24px; max-width: 1100px; margin: 0 auto; }
-.section-label {
-  font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--purple-light); margin-bottom: 16px; display: block;
-}
+.section-label { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--purple-light); margin-bottom: 16px; display: block; }
 .features-header { margin-bottom: 72px; }
-.features-header h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(36px, 5vw, 56px); letter-spacing: -0.02em; line-height: 1.1;
-}
-.features-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
+.features-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 5vw, 56px); letter-spacing: -0.02em; line-height: 1.1; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .feature-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 20px; padding: 32px;
@@ -203,178 +190,136 @@ nav {
 }
 .feature-card:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-4px); }
 .feature-card:hover::before { opacity: 1; }
-.feature-icon {
-  font-size: 32px; margin-bottom: 20px; display: block;
-}
+.feature-icon { font-size: 32px; margin-bottom: 20px; display: block; }
 .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
 .feature-card p { color: var(--muted); font-size: 15px; line-height: 1.7; }
 .feature-card.featured {
   background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(91,33,182,0.1));
-  border-color: rgba(124,58,237,0.3);
-  grid-column: span 2;
+  border-color: rgba(124,58,237,0.3); grid-column: span 2;
 }
 @media (max-width: 700px) { .feature-card.featured { grid-column: span 1; } }
 
-/* ── DUO SECTION ── */
-.duo-section {
-  padding: 120px 24px; max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
+/* ── DUO ── */
+.duo-section { padding: 120px 24px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 @media (max-width: 768px) { .duo-section { grid-template-columns: 1fr; gap: 48px; } }
-.duo-text h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(36px, 4vw, 52px); letter-spacing: -0.02em; line-height: 1.1;
-  margin-bottom: 24px;
-}
+.duo-text h2 { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 4vw, 52px); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 24px; }
 .duo-text p { color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
-.duo-visual {
-  background: var(--surface); border-radius: 24px;
-  border: 1px solid var(--border); padding: 32px;
-}
-.duo-row {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px; background: rgba(255,255,255,0.04);
-  border-radius: 14px; margin-bottom: 12px;
-}
+.duo-visual { background: var(--surface); border-radius: 24px; border: 1px solid var(--border); padding: 32px; }
+.duo-row { display: flex; align-items: center; justify-content: space-between; padding: 16px; background: rgba(255,255,255,0.04); border-radius: 14px; margin-bottom: 12px; }
 .duo-user { display: flex; align-items: center; gap: 12px; }
-.duo-avatar {
-  width: 36px; height: 36px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px;
-}
+.duo-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
 .avatar-me { background: rgba(124,58,237,0.3); }
 .avatar-them { background: rgba(59,130,246,0.3); }
 .duo-name { font-size: 14px; font-weight: 500; }
 .duo-ep { font-family: monospace; font-size: 13px; font-weight: 700; }
 .duo-ep.me { color: var(--purple-light); }
 .duo-ep.them { color: #60a5fa; }
-.duo-sync {
-  text-align: center; padding: 12px; margin-top: 16px;
-  background: rgba(34,197,94,0.08); border-radius: 10px;
-  color: #4ade80; font-size: 13px; font-weight: 600;
-}
+.duo-sync { text-align: center; padding: 12px; margin-top: 16px; background: rgba(34,197,94,0.08); border-radius: 10px; color: #4ade80; font-size: 13px; font-weight: 600; }
 
 /* ── STATS ── */
-.stats-section {
-  padding: 80px 24px; max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-}
+.stats-section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 @media (max-width: 600px) { .stats-section { grid-template-columns: 1fr; } }
-.stat {
-  background: var(--surface); padding: 48px 32px; text-align: center;
-}
+.stat { background: var(--surface); padding: 48px 32px; text-align: center; }
 .stat:first-child { border-radius: 20px 0 0 20px; }
 .stat:last-child { border-radius: 0 20px 20px 0; }
-.stat-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 56px; letter-spacing: -0.03em; display: block;
-  background: linear-gradient(135deg, var(--white), var(--purple-light));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
+.stat-num { font-family: 'DM Serif Display', serif; font-size: 56px; letter-spacing: -0.03em; display: block; background: linear-gradient(135deg, var(--white), var(--purple-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .stat-label { color: var(--muted); font-size: 14px; margin-top: 8px; }
 
-/* ── CTA SECTION ── */
-.cta-section {
-  padding: 160px 24px; text-align: center; position: relative; overflow: hidden;
-}
-.cta-glow {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 600px; height: 600px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%);
-  pointer-events: none;
-}
-.cta-section h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.03em; line-height: 1.05;
-  margin-bottom: 24px; position: relative;
-}
+/* ── CTA ── */
+.cta-section { padding: 160px 24px; text-align: center; position: relative; overflow: hidden; }
+.cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%); pointer-events: none; }
+.cta-section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 24px; position: relative; }
 .cta-section p { color: var(--muted); font-size: 18px; margin-bottom: 48px; position: relative; }
-.appstore-btn {
-  display: inline-flex; align-items: center; gap: 12px;
-  background: var(--white); color: var(--ink);
-  padding: 16px 32px; border-radius: 100px;
-  font-size: 16px; font-weight: 600; text-decoration: none;
-  transition: all 0.25s; position: relative;
-  box-shadow: 0 0 60px rgba(255,255,255,0.1);
-}
+.appstore-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--white); color: var(--ink); padding: 16px 32px; border-radius: 100px; font-size: 16px; font-weight: 600; text-decoration: none; transition: all 0.25s; position: relative; box-shadow: 0 0 60px rgba(255,255,255,0.1); }
 .appstore-btn:hover { transform: translateY(-2px); box-shadow: 0 0 80px rgba(255,255,255,0.2); }
 .appstore-btn svg { width: 24px; height: 24px; }
 
+/* ── CONTACT ── */
+.contact-section { padding: 100px 24px; max-width: 640px; margin: 0 auto; text-align: center; }
+.contact-section .section-label { display: inline-block; margin-bottom: 16px; }
+.contact-section h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.02em; margin-bottom: 16px; }
+.contact-section > p { color: var(--muted); font-size: 17px; margin-bottom: 40px; line-height: 1.6; }
+.contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.contact-icon { width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, var(--purple), #A78BFA); display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.contact-card h3 { font-size: 20px; font-weight: 600; }
+.contact-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--purple); color: white; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.25s; }
+.contact-btn:hover { background: #6D28D9; transform: translateY(-2px); }
+.contact-btn svg { width: 18px; height: 18px; }
+
 /* ── FOOTER ── */
-footer {
-  border-top: 1px solid var(--border); padding: 40px 24px;
-  max-width: 1100px; margin: 0 auto;
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: gap;
-  color: var(--muted); font-size: 14px;
-}
+footer { border-top: 1px solid var(--border); padding: 40px 24px; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 14px; }
 footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
 footer a:hover { color: var(--white); }
 footer nav { display: flex; gap: 24px; }
 
 /* ── ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-.reveal {
-  opacity: 0; transform: translateY(32px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── HIDDEN LANG ── */
+[data-lang] { display: none; }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-logo">SeriesTracker</div>
-  <a href="#download" class="nav-cta">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-    Télécharger
-  </a>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="#download" class="nav-cta">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <span data-fr>Télécharger</span>
+      <span data-en>Download</span>
+    </a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
-
   <div class="hero-eyebrow">
     <span class="dot"></span>
-    Disponible sur iPhone
+    <span data-fr>Disponible sur iPhone</span>
+    <span data-en>Available on iPhone</span>
   </div>
-
-  <h1>Ne perdez plus<br><em>le fil</em></h1>
-
+  <h1>
+    <span data-fr>Ne perdez plus<br><em>le fil</em></span>
+    <span data-en>Never lose<br><em>the thread</em></span>
+  </h1>
   <p class="hero-sub">
-    Suivez vos séries épisode par épisode, regardez en duo avec un proche, et ne ratez plus jamais où vous en êtes.
+    <span data-fr>Suivez vos séries épisode par épisode, regardez en duo avec un proche, et ne ratez plus jamais où vous en êtes.</span>
+    <span data-en>Track your shows episode by episode, watch together with someone close, and never lose track of where you left off.</span>
   </p>
-
   <div class="hero-actions">
     <a href="#download" class="btn-primary">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      Télécharger gratuitement
+      <span data-fr>Télécharger gratuitement</span>
+      <span data-en>Download for free</span>
     </a>
     <a href="#features" class="btn-secondary">
-      Découvrir les fonctionnalités →
+      <span data-fr>Découvrir les fonctionnalités →</span>
+      <span data-en>Explore features →</span>
     </a>
   </div>
-
   <div class="mockup-wrap">
     <div class="mockup-screen">
       <div class="mockup-notch"></div>
       <div class="mockup-content">
-        <div class="mockup-title">Ma Watchlist</div>
+        <div class="mockup-title" data-fr>Ma Watchlist</div>
+        <div class="mockup-title" data-en>My Watchlist</div>
         <div class="mockup-card">
           <div class="mockup-poster" style="background: linear-gradient(135deg, #1e3a5f, #2d6a9f);"></div>
           <div class="mockup-info">
             <div class="mockup-series-title">Severance</div>
             <div class="mockup-ep">S02E05</div>
-            <span class="mockup-tag tag-orange">EN COURS</span>
+            <span class="mockup-tag tag-orange" data-fr>EN COURS</span>
+            <span class="mockup-tag tag-orange" data-en>WATCHING</span>
           </div>
         </div>
         <div class="mockup-card">
@@ -390,7 +335,8 @@ footer nav { display: flex; gap: 24px; }
           <div class="mockup-info">
             <div class="mockup-series-title">Succession</div>
             <div class="mockup-ep">S04E10</div>
-            <span class="mockup-tag tag-green">TERMINÉE ✓</span>
+            <span class="mockup-tag tag-green" data-fr>TERMINÉE ✓</span>
+            <span class="mockup-tag tag-green" data-en>COMPLETED ✓</span>
           </div>
         </div>
       </div>
@@ -401,39 +347,55 @@ footer nav { display: flex; gap: 24px; }
 <!-- FEATURES -->
 <section class="features" id="features">
   <div class="features-header reveal">
-    <span class="section-label">Fonctionnalités</span>
-    <h2>Tout ce dont vous avez<br>besoin, rien de plus.</h2>
+    <span class="section-label" data-fr>Fonctionnalités</span>
+    <span class="section-label" data-en>Features</span>
+    <h2>
+      <span data-fr>Tout ce dont vous avez<br>besoin, rien de plus.</span>
+      <span data-en>Everything you need,<br>nothing more.</span>
+    </h2>
   </div>
   <div class="features-grid">
     <div class="feature-card reveal">
       <span class="feature-icon">📺</span>
-      <h3>Suivi épisode par épisode</h3>
-      <p>Marquez chaque épisode comme vu d'un simple swipe. Votre avancement se synchronise instantanément.</p>
+      <h3 data-fr>Suivi épisode par épisode</h3>
+      <h3 data-en>Episode-by-episode tracking</h3>
+      <p data-fr>Marquez chaque épisode comme vu d'un simple swipe. Votre avancement se synchronise instantanément.</p>
+      <p data-en>Mark each episode as watched with a single swipe. Your progress syncs instantly.</p>
     </div>
     <div class="feature-card reveal">
       <span class="feature-icon">🔔</span>
-      <h3>Alertes de sortie</h3>
-      <p>Soyez notifié la veille et le matin de la sortie de chaque nouvel épisode de vos séries en cours.</p>
+      <h3 data-fr>Alertes de sortie</h3>
+      <h3 data-en>Release alerts</h3>
+      <p data-fr>Soyez notifié la veille et le matin de la sortie de chaque nouvel épisode de vos séries en cours.</p>
+      <p data-en>Get notified the evening before and morning of every new episode release for shows you follow.</p>
     </div>
     <div class="feature-card featured reveal">
       <span class="feature-icon">👥</span>
-      <h3>Mode Duo — regardez ensemble</h3>
-      <p>Partagez votre avancement avec un proche en temps réel. Détection automatique de désynchronisation, commentaires partagés, et un petit bouton pour réveiller l'autre quand il prend du retard.</p>
+      <h3 data-fr>Mode Duo — regardez ensemble</h3>
+      <h3 data-en>Duo Mode — watch together</h3>
+      <p data-fr>Partagez votre avancement avec un proche en temps réel. Détection automatique de désynchronisation, commentaires partagés, et un petit bouton pour réveiller l'autre quand il prend du retard.</p>
+      <p data-en>Share your progress with someone close in real time. Automatic out-of-sync detection, shared comments, and a little nudge button when one of you falls behind.</p>
     </div>
     <div class="feature-card reveal">
       <span class="feature-icon">⭐️</span>
-      <h3>Notes & avis personnels</h3>
-      <p>Notez vos séries sur 5 étoiles, laissez des mémos privés pour vous souvenir de vos impressions.</p>
+      <h3 data-fr>Notes & avis personnels</h3>
+      <h3 data-en>Personal notes & ratings</h3>
+      <p data-fr>Notez vos séries sur 5 étoiles, laissez des mémos privés pour vous souvenir de vos impressions.</p>
+      <p data-en>Rate your shows out of 5 stars, leave private memos to remember your impressions.</p>
     </div>
     <div class="feature-card reveal">
       <span class="feature-icon">📊</span>
-      <h3>Statistiques de visionnage</h3>
-      <p>Découvrez combien d'heures vous avez regardé, vos plateformes favorites, votre streak de visionnage.</p>
+      <h3 data-fr>Statistiques de visionnage</h3>
+      <h3 data-en>Watching statistics</h3>
+      <p data-fr>Découvrez combien d'heures vous avez regardé, vos plateformes favorites, votre streak de visionnage.</p>
+      <p data-en>Discover how many hours you've watched, your favorite platforms, and your viewing streak.</p>
     </div>
     <div class="feature-card reveal">
       <span class="feature-icon">🔍</span>
-      <h3>Recherche TMDB intégrée</h3>
-      <p>Ajoutez n'importe quelle série en quelques secondes — affiches, synopsis, nombre de saisons automatiquement importés.</p>
+      <h3 data-fr>Recherche TMDB intégrée</h3>
+      <h3 data-en>Built-in TMDB search</h3>
+      <p data-fr>Ajoutez n'importe quelle série en quelques secondes — affiches, synopsis, nombre de saisons automatiquement importés.</p>
+      <p data-en>Add any show in seconds — posters, synopsis, and season count automatically imported.</p>
     </div>
   </div>
 </section>
@@ -442,18 +404,27 @@ footer nav { display: flex; gap: 24px; }
 <section style="padding: 0 24px;">
   <div class="duo-section">
     <div class="duo-text reveal">
-      <span class="section-label">Mode Duo</span>
-      <h2>Regardez ensemble,<br>sans vous perdre.</h2>
-      <p>Finis les "t'en es où ?" à chaque conversation. SeriesTracker affiche en temps réel où en est l'autre, épisode par épisode.</p>
-      <p>Si l'un de vous prend du retard, un bouton 👋 envoie une petite notification à l'autre. Subtil mais efficace.</p>
+      <span class="section-label">Duo</span>
+      <h2>
+        <span data-fr>Regardez ensemble,<br>sans vous perdre.</span>
+        <span data-en>Watch together,<br>stay in sync.</span>
+      </h2>
+      <p data-fr>Finis les "t'en es où ?" à chaque conversation. SeriesTracker affiche en temps réel où en est l'autre, épisode par épisode.</p>
+      <p data-en>No more "where are you?" every conversation. SeriesTracker shows in real time where your partner is, episode by episode.</p>
+      <p data-fr>Si l'un de vous prend du retard, un bouton 👋 envoie une petite notification à l'autre. Subtil mais efficace.</p>
+      <p data-en>If one of you falls behind, a 👋 button sends a gentle nudge. Subtle but effective.</p>
     </div>
     <div class="duo-visual reveal">
-      <div style="font-size: 13px; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.05em; text-transform: uppercase;">The Bear — Saison 3</div>
+      <div style="font-size: 13px; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.05em; text-transform: uppercase;">
+        <span data-fr>The Bear — Saison 3</span>
+        <span data-en>The Bear — Season 3</span>
+      </div>
       <div class="duo-row">
         <div class="duo-user">
           <div class="duo-avatar avatar-me">🧑</div>
           <div>
-            <div class="duo-name">Moi</div>
+            <div class="duo-name" data-fr>Moi</div>
+            <div class="duo-name" data-en>Me</div>
           </div>
         </div>
         <div class="duo-ep me">S03E05</div>
@@ -461,13 +432,14 @@ footer nav { display: flex; gap: 24px; }
       <div class="duo-row">
         <div class="duo-user">
           <div class="duo-avatar avatar-them">👤</div>
-          <div>
-            <div class="duo-name">Sophie</div>
-          </div>
+          <div><div class="duo-name">Sophie</div></div>
         </div>
         <div class="duo-ep them">S03E05</div>
       </div>
-      <div class="duo-sync">✓ Synchronisés — continuez comme ça !</div>
+      <div class="duo-sync">
+        <span data-fr>✓ Synchronisés — continuez comme ça !</span>
+        <span data-en>✓ In sync — keep it up!</span>
+      </div>
     </div>
   </div>
 </section>
@@ -476,11 +448,13 @@ footer nav { display: flex; gap: 24px; }
 <div class="stats-section reveal">
   <div class="stat">
     <span class="stat-num">∞</span>
-    <div class="stat-label">Séries disponibles via TMDB</div>
+    <div class="stat-label" data-fr>Séries disponibles via TMDB</div>
+    <div class="stat-label" data-en>Shows available via TMDB</div>
   </div>
   <div class="stat">
     <span class="stat-num">0€</span>
-    <div class="stat-label">Pour commencer</div>
+    <div class="stat-label" data-fr>Pour commencer</div>
+    <div class="stat-label" data-en>To get started</div>
   </div>
   <div class="stat">
     <span class="stat-num">iOS</span>
@@ -491,24 +465,66 @@ footer nav { display: flex; gap: 24px; }
 <!-- CTA -->
 <section class="cta-section" id="download">
   <div class="cta-glow"></div>
-  <h2>Prêt à ne plus<br>perdre le fil ?</h2>
-  <p>Téléchargez SeriesTracker gratuitement.</p>
+  <h2>
+    <span data-fr>Prêt à ne plus<br>perdre le fil ?</span>
+    <span data-en>Ready to never<br>lose track again?</span>
+  </h2>
+  <p data-fr>Téléchargez SeriesTracker gratuitement.</p>
+  <p data-en>Download SeriesTracker for free.</p>
   <a href="#" class="appstore-btn">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-    Télécharger sur l'App Store
+    <span data-fr>Télécharger sur l'App Store</span>
+    <span data-en>Download on the App Store</span>
   </a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="support">
+  <span class="section-label">Support</span>
+  <h2>
+    <span data-fr>Une question ?<br>On est là.</span>
+    <span data-en>A question?<br>We're here.</span>
+  </h2>
+  <p data-fr>Une suggestion, un bug, ou juste envie de dire bonjour — le développeur lit chaque message.</p>
+  <p data-en>A suggestion, a bug, or just want to say hi — the developer reads every message.</p>
+  <div class="contact-card">
+    <div class="contact-icon">✉️</div>
+    <h3 data-fr>Contacter le développeur</h3>
+    <h3 data-en>Contact the developer</h3>
+    <a href="mailto:martin.lecue@gmail.com" class="contact-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      Email
+    </a>
+  </div>
 </section>
 
 <footer>
   <div class="nav-logo">SeriesTracker</div>
   <nav>
-    <a href="privacy-policy.html">Confidentialité</a>
-    <a href="mailto:contact@seriestracker.app">Contact</a>
+    <a href="privacy-policy.html" data-fr>Confidentialité</a>
+    <a href="privacy-policy.html" data-en>Privacy</a>
+    <a href="#support" data-fr>Support</a>
+    <a href="#support" data-en>Support</a>
   </nav>
-  <div>© 2025 Martin Le Cué</div>
+  <div>© 2026 Martin Le Cué</div>
 </footer>
 
 <script>
+// ── LANG SWITCHER ──
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-fr]').forEach(el => el.style.display = lang === 'fr' ? '' : 'none');
+  document.querySelectorAll('[data-en]').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  localStorage.setItem('lang', lang);
+}
+
+// Init
+const savedLang = localStorage.getItem('lang') || 'fr';
+setLang(savedLang);
+
+// ── SCROLL ANIMATIONS ──
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
