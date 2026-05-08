@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html_content = '''<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -96,6 +96,12 @@ nav {
   background: radial-gradient(circle, rgba(245,200,66,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
+.hero-logo {
+  width: 120px; height: 120px; border-radius: 28px;
+  margin-bottom: 32px;
+  box-shadow: 0 20px 60px rgba(124,58,237,0.3);
+  animation: fadeUp 0.8s ease both;
+}
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   border: 1px solid rgba(124,58,237,0.4);
@@ -142,34 +148,58 @@ nav {
 }
 .btn-secondary:hover { color: var(--white); }
 
-/* ── MOCKUP ── */
-.mockup-wrap {
+/* ── HERO SCREEN ── */
+.hero-screen-wrap {
   position: relative; margin-top: 80px; width: 100%; max-width: 900px;
   animation: fadeUp 0.8s 0.4s ease both;
+  display: flex; justify-content: center;
 }
-.mockup-screen {
-  width: 280px; background: var(--surface);
-  border-radius: 44px; border: 1px solid var(--border);
-  overflow: hidden; margin: 0 auto;
+.hero-screen {
+  width: 280px; max-width: 100%;
+  border-radius: 32px;
+  border: 1px solid var(--border);
   box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05);
 }
-.mockup-notch { width: 120px; height: 34px; background: var(--ink); border-radius: 0 0 20px 20px; margin: 0 auto 16px; }
-.mockup-content { padding: 0 16px 32px; }
-.mockup-title { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 16px; }
-.mockup-card {
-  background: rgba(255,255,255,0.05); border-radius: 16px;
-  padding: 14px; margin-bottom: 10px;
-  display: flex; align-items: center; gap: 12px;
-  border: 1px solid rgba(255,255,255,0.06);
+
+/* ── SCREENSHOTS GALLERY ── */
+.screenshots-section {
+  padding: 120px 24px; max-width: 1200px; margin: 0 auto;
 }
-.mockup-poster { width: 40px; height: 60px; border-radius: 8px; flex-shrink: 0; }
-.mockup-info { flex: 1; min-width: 0; }
-.mockup-series-title { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mockup-ep { font-size: 11px; color: var(--muted); font-family: monospace; margin-top: 3px; }
-.mockup-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 6px; margin-top: 5px; display: inline-block; }
-.tag-green { background: rgba(34,197,94,0.15); color: #4ade80; }
-.tag-purple { background: rgba(124,58,237,0.2); color: var(--purple-light); }
-.tag-orange { background: rgba(249,115,22,0.15); color: #fb923c; }
+.screenshots-header {
+  text-align: center; margin-bottom: 64px;
+}
+.screenshots-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  letter-spacing: -0.02em; line-height: 1.1;
+}
+.screenshots-row {
+  display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+}
+.screenshot-card {
+  width: 200px; flex-shrink: 0; text-align: center;
+}
+.screenshot-card img {
+  width: 100%; border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+}
+.screenshot-card img:hover {
+  transform: translateY(-6px);
+}
+.screenshot-card p {
+  margin-top: 16px; font-size: 14px; font-weight: 500;
+  color: var(--muted); line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .screenshots-row {
+    flex-wrap: nowrap; justify-content: flex-start;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-bottom: 16px; -webkit-overflow-scrolling: touch;
+  }
+  .screenshot-card { scroll-snap-align: center; min-width: 180px; }
+}
 
 /* ── FEATURES ── */
 .features { padding: 120px 24px; max-width: 1100px; margin: 0 auto; }
@@ -193,11 +223,6 @@ nav {
 .feature-icon { font-size: 32px; margin-bottom: 20px; display: block; }
 .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
 .feature-card p { color: var(--muted); font-size: 15px; line-height: 1.7; }
-.feature-card.featured {
-  background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(91,33,182,0.1));
-  border-color: rgba(124,58,237,0.3); grid-column: span 2;
-}
-@media (max-width: 700px) { .feature-card.featured { grid-column: span 1; } }
 
 /* ── DUO ── */
 .duo-section { padding: 120px 24px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -283,10 +308,11 @@ footer nav { display: flex; gap: 24px; }
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
+  <img src="logo.png" alt="SeriesTracker Logo" class="hero-logo">
   <div class="hero-eyebrow">
     <span class="dot"></span>
-    <span data-fr>Disponible sur iPhone</span>
-    <span data-en>Available on iPhone</span>
+    <span data-fr>Disponible sur iPhone, iPad et Mac</span>
+    <span data-en>Available on iPhone, iPad &amp; Mac</span>
   </div>
   <h1>
     <span data-fr>Ne perdez plus<br><em>le fil</em></span>
@@ -307,40 +333,8 @@ footer nav { display: flex; gap: 24px; }
       <span data-en>Explore features →</span>
     </a>
   </div>
-  <div class="mockup-wrap">
-    <div class="mockup-screen">
-      <div class="mockup-notch"></div>
-      <div class="mockup-content">
-        <div class="mockup-title" data-fr>Ma Watchlist</div>
-        <div class="mockup-title" data-en>My Watchlist</div>
-        <div class="mockup-card">
-          <div class="mockup-poster" style="background: linear-gradient(135deg, #1e3a5f, #2d6a9f);"></div>
-          <div class="mockup-info">
-            <div class="mockup-series-title">Severance</div>
-            <div class="mockup-ep">S02E05</div>
-            <span class="mockup-tag tag-orange" data-fr>EN COURS</span>
-            <span class="mockup-tag tag-orange" data-en>WATCHING</span>
-          </div>
-        </div>
-        <div class="mockup-card">
-          <div class="mockup-poster" style="background: linear-gradient(135deg, #2d1b4e, #5b21b6);"></div>
-          <div class="mockup-info">
-            <div class="mockup-series-title">The Bear</div>
-            <div class="mockup-ep">S03E01</div>
-            <span class="mockup-tag tag-purple">DUO 👥</span>
-          </div>
-        </div>
-        <div class="mockup-card">
-          <div class="mockup-poster" style="background: linear-gradient(135deg, #1a3a2a, #166534);"></div>
-          <div class="mockup-info">
-            <div class="mockup-series-title">Succession</div>
-            <div class="mockup-ep">S04E10</div>
-            <span class="mockup-tag tag-green" data-fr>TERMINÉE ✓</span>
-            <span class="mockup-tag tag-green" data-en>COMPLETED ✓</span>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="hero-screen-wrap">
+    <img src="screen.png" alt="SeriesTracker App Screen" class="hero-screen">
   </div>
 </section>
 
@@ -369,7 +363,7 @@ footer nav { display: flex; gap: 24px; }
       <p data-fr>Soyez notifié la veille et le matin de la sortie de chaque nouvel épisode de vos séries en cours.</p>
       <p data-en>Get notified the evening before and morning of every new episode release for shows you follow.</p>
     </div>
-    <div class="feature-card featured reveal">
+    <div class="feature-card reveal">
       <span class="feature-icon">👥</span>
       <h3 data-fr>Mode Duo — regardez ensemble</h3>
       <h3 data-en>Duo Mode — watch together</h3>
@@ -378,8 +372,8 @@ footer nav { display: flex; gap: 24px; }
     </div>
     <div class="feature-card reveal">
       <span class="feature-icon">⭐️</span>
-      <h3 data-fr>Notes & avis personnels</h3>
-      <h3 data-en>Personal notes & ratings</h3>
+      <h3 data-fr>Notes &amp; avis personnels</h3>
+      <h3 data-en>Personal notes &amp; ratings</h3>
       <p data-fr>Notez vos séries sur 5 étoiles, laissez des mémos privés pour vous souvenir de vos impressions.</p>
       <p data-en>Rate your shows out of 5 stars, leave private memos to remember your impressions.</p>
     </div>
@@ -396,6 +390,45 @@ footer nav { display: flex; gap: 24px; }
       <h3 data-en>Built-in TMDB search</h3>
       <p data-fr>Ajoutez n'importe quelle série en quelques secondes — affiches, synopsis, nombre de saisons automatiquement importés.</p>
       <p data-en>Add any show in seconds — posters, synopsis, and season count automatically imported.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screenshots-section" id="screenshots">
+  <div class="screenshots-header reveal">
+    <span class="section-label" data-fr>Aperçu</span>
+    <span class="section-label" data-en>Preview</span>
+    <h2>
+      <span data-fr>Découvrez l'application<br>en images.</span>
+      <span data-en>See the app<br>in action.</span>
+    </h2>
+  </div>
+  <div class="screenshots-row">
+    <div class="screenshot-card reveal">
+      <img src="screenshot-1.png" alt="Screenshot 1">
+      <p data-fr>Suivez toutes vos séries</p>
+      <p data-en>Track all your shows</p>
+    </div>
+    <div class="screenshot-card reveal">
+      <img src="screenshot-2.png" alt="Screenshot 2">
+      <p data-fr>Marquez au fur et à mesure</p>
+      <p data-en>Mark as you watch</p>
+    </div>
+    <div class="screenshot-card reveal">
+      <img src="screenshot-3.png" alt="Screenshot 3">
+      <p data-fr>Regardez ensemble, restez synchronisés</p>
+      <p data-en>Watch together, stay in sync</p>
+    </div>
+    <div class="screenshot-card reveal">
+      <img src="screenshot-4.png" alt="Screenshot 4">
+      <p data-fr>Analysez votre temps d'écran</p>
+      <p data-en>Insights into your screen time</p>
+    </div>
+    <div class="screenshot-card reveal">
+      <img src="screenshot-5.png" alt="Screenshot 5">
+      <p data-fr>Découvrez les détails de vos séries</p>
+      <p data-en>Get details about the shows you watch</p>
     </div>
   </div>
 </section>
@@ -457,8 +490,8 @@ footer nav { display: flex; gap: 24px; }
     <div class="stat-label" data-en>To get started</div>
   </div>
   <div class="stat">
-    <span class="stat-num">iOS</span>
-    <div class="stat-label">iPhone & iPad</div>
+    <span class="stat-num">Apple</span>
+    <div class="stat-label">iPhone, iPad &amp; Mac</div>
   </div>
 </div>
 
@@ -546,4 +579,28 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
-</html>
+</html>'''
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("✅ index.html has been generated successfully!")
+print()
+print("Summary of changes made:")
+print("1. ✅ Added large app logo (logo.png) at the top of the hero section")
+print("2. ✅ Replaced fake iPhone mockup with a single <img src=\"screen.png\"> screenshot")
+print("3. ✅ Added new 'Screenshots' gallery section with 5 images (screenshot-1.png to screenshot-5.png) with FR/EN descriptions")
+print("4. ✅ Changed 'Disponible sur iPhone' → 'Disponible sur iPhone, iPad et Mac' (EN: 'Available on iPhone, iPad & Mac')")
+print("5. ✅ Removed .featured class from Duo Mode card — all 6 feature cards are now the same size")
+print("6. ✅ Updated last stat from 'iOS / iPhone & iPad' → 'Apple / iPhone, iPad & Mac'")
+print("7. ✅ Cleaned up all old mockup CSS and replaced with new styles for hero-screen and screenshots gallery")
+print()
+print("Images you need to add to your GitHub repo:")
+print("  • logo.png — Your app logo (displayed large at the top)")
+print("  • screen.png — Main app screenshot (hero section)")
+print("  • screenshot-1.png — 'Suivez toutes vos séries' / 'Track all your shows'")
+print("  • screenshot-2.png — 'Marquez au fur et à mesure' / 'Mark as you watch'")
+print("  • screenshot-3.png — 'Regardez ensemble, restez synchronisés' / 'Watch together, stay in sync'")
+print("  • screenshot-4.png — 'Analysez votre temps d'écran' / 'Insights into your screen time'")
+print("  • screenshot-5.png — 'Découvrez les détails de vos séries' / 'Get details about the shows you watch'")
+
