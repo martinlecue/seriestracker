@@ -79,9 +79,8 @@ nav {
 /* ── HERO ── */
 .hero {
   position: relative; min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center; padding: 120px 24px 80px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 120px 60px 80px;
   overflow: hidden;
 }
 .hero-glow {
@@ -96,10 +95,19 @@ nav {
   background: radial-gradient(circle, rgba(245,200,66,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
+.hero-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+  max-width: 1200px; width: 100%; margin: 0 auto;
+}
+.hero-text {
+  display: flex; flex-direction: column; align-items: flex-start;
+  text-align: left;
+}
 .hero-logo {
-  width: 120px; height: 120px; border-radius: 28px;
-  margin-bottom: 32px;
-  box-shadow: 0 20px 60px rgba(124,58,237,0.3);
+  width: 100px; height: 100px; border-radius: 24px;
+  margin-bottom: 28px;
   animation: fadeUp 0.8s ease both;
 }
 .hero-eyebrow {
@@ -115,7 +123,7 @@ nav {
 .dot { width: 6px; height: 6px; background: var(--purple-light); border-radius: 50%; animation: pulse 2s infinite; }
 .hero h1 {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(42px, 6vw, 80px);
   line-height: 1.0; letter-spacing: -0.03em;
   margin-bottom: 24px;
   animation: fadeUp 0.8s 0.1s ease both;
@@ -126,12 +134,12 @@ nav {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .hero-sub {
-  font-size: clamp(16px, 2vw, 20px); color: var(--muted);
-  max-width: 520px; line-height: 1.7; margin-bottom: 48px; font-weight: 300;
+  font-size: clamp(16px, 1.8vw, 20px); color: var(--muted);
+  max-width: 520px; line-height: 1.7; margin-bottom: 40px; font-weight: 300;
   animation: fadeUp 0.8s 0.2s ease both;
 }
 .hero-actions {
-  display: flex; gap: 16px; align-items: center; flex-wrap: wrap; justify-content: center;
+  display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
   animation: fadeUp 0.8s 0.3s ease both;
 }
 .btn-primary {
@@ -150,15 +158,23 @@ nav {
 
 /* ── HERO SCREEN ── */
 .hero-screen-wrap {
-  position: relative; margin-top: 80px; width: 100%; max-width: 900px;
+  display: flex; justify-content: center; align-items: center;
   animation: fadeUp 0.8s 0.4s ease both;
-  display: flex; justify-content: center;
 }
 .hero-screen {
-  width: 280px; max-width: 100%;
+  width: 300px; max-width: 100%;
   border-radius: 32px;
-  border: 1px solid var(--border);
-  box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 120px 24px 80px; }
+  .hero-inner {
+    grid-template-columns: 1fr; text-align: center;
+  }
+  .hero-text { align-items: center; text-align: center; }
+  .hero-actions { justify-content: center; }
+  .hero-screen-wrap { order: 2; }
+  .hero-screen { width: 260px; }
 }
 
 /* ── SCREENSHOTS GALLERY ── */
@@ -181,8 +197,6 @@ nav {
 }
 .screenshot-card img {
   width: 100%; border-radius: 20px;
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   transition: transform 0.3s;
 }
 .screenshot-card img:hover {
@@ -308,33 +322,37 @@ footer nav { display: flex; gap: 24px; }
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
-  <img src="logo.png" alt="SeriesTracker Logo" class="hero-logo">
-  <div class="hero-eyebrow">
-    <span class="dot"></span>
-    <span data-fr>Disponible sur iPhone, iPad et Mac</span>
-    <span data-en>Available on iPhone, iPad &amp; Mac</span>
-  </div>
-  <h1>
-    <span data-fr>Ne perdez plus<br><em>le fil</em></span>
-    <span data-en>Never lose<br><em>the thread</em></span>
-  </h1>
-  <p class="hero-sub">
-    <span data-fr>Suivez vos séries épisode par épisode, regardez en duo avec un proche, et ne ratez plus jamais où vous en êtes.</span>
-    <span data-en>Track your shows episode by episode, watch together with someone close, and never lose track of where you left off.</span>
-  </p>
-  <div class="hero-actions">
-    <a href="#download" class="btn-primary">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      <span data-fr>Télécharger gratuitement</span>
-      <span data-en>Download for free</span>
-    </a>
-    <a href="#features" class="btn-secondary">
-      <span data-fr>Découvrir les fonctionnalités →</span>
-      <span data-en>Explore features →</span>
-    </a>
-  </div>
-  <div class="hero-screen-wrap">
-    <img src="screen.png" alt="SeriesTracker App Screen" class="hero-screen">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <img src="logo.png" alt="SeriesTracker Logo" class="hero-logo">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        <span data-fr>Disponible sur iPhone, iPad et Mac</span>
+        <span data-en>Available on iPhone, iPad &amp; Mac</span>
+      </div>
+      <h1>
+        <span data-fr>Ne perdez plus<br><em>le fil</em></span>
+        <span data-en>Never lose<br><em>the thread</em></span>
+      </h1>
+      <p class="hero-sub">
+        <span data-fr>Suivez vos séries épisode par épisode, regardez en duo avec un proche, et ne ratez plus jamais où vous en êtes.</span>
+        <span data-en>Track your shows episode by episode, watch together with someone close, and never lose track of where you left off.</span>
+      </p>
+      <div class="hero-actions">
+        <a href="#download" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span data-fr>Télécharger gratuitement</span>
+          <span data-en>Download for free</span>
+        </a>
+        <a href="#features" class="btn-secondary">
+          <span data-fr>Découvrir les fonctionnalités →</span>
+          <span data-en>Explore features →</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-screen-wrap">
+      <img src="screen.png" alt="SeriesTracker App Screen" class="hero-screen">
+    </div>
   </div>
 </section>
 
@@ -580,27 +598,3 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>'''
-
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(html_content)
-
-print("✅ index.html has been generated successfully!")
-print()
-print("Summary of changes made:")
-print("1. ✅ Added large app logo (logo.png) at the top of the hero section")
-print("2. ✅ Replaced fake iPhone mockup with a single <img src=\"screen.png\"> screenshot")
-print("3. ✅ Added new 'Screenshots' gallery section with 5 images (screenshot-1.png to screenshot-5.png) with FR/EN descriptions")
-print("4. ✅ Changed 'Disponible sur iPhone' → 'Disponible sur iPhone, iPad et Mac' (EN: 'Available on iPhone, iPad & Mac')")
-print("5. ✅ Removed .featured class from Duo Mode card — all 6 feature cards are now the same size")
-print("6. ✅ Updated last stat from 'iOS / iPhone & iPad' → 'Apple / iPhone, iPad & Mac'")
-print("7. ✅ Cleaned up all old mockup CSS and replaced with new styles for hero-screen and screenshots gallery")
-print()
-print("Images you need to add to your GitHub repo:")
-print("  • logo.png — Your app logo (displayed large at the top)")
-print("  • screen.png — Main app screenshot (hero section)")
-print("  • screenshot-1.png — 'Suivez toutes vos séries' / 'Track all your shows'")
-print("  • screenshot-2.png — 'Marquez au fur et à mesure' / 'Mark as you watch'")
-print("  • screenshot-3.png — 'Regardez ensemble, restez synchronisés' / 'Watch together, stay in sync'")
-print("  • screenshot-4.png — 'Analysez votre temps d'écran' / 'Insights into your screen time'")
-print("  • screenshot-5.png — 'Découvrez les détails de vos séries' / 'Get details about the shows you watch'")
-
