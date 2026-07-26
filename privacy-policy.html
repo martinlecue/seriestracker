@@ -5,206 +5,314 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Politique de confidentialité — SeriesTracker</title>
 <style>
-  :root {
-    --purple: #7C3AED;
-    --bg: #0F0F13;
-    --surface: #1A1A22;
-    --text: #E8E8F0;
-    --muted: #8888A0;
-    --border: #2A2A38;
-  }
-  .back-btn {
-    position: fixed; top: 20px; left: 24px; z-index: 100;
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--surface); border: 1px solid var(--border);
-    color: var(--muted); padding: 8px 16px; border-radius: 100px;
-    font-size: 13px; text-decoration: none; font-family: 'Georgia', serif;
-    transition: all 0.2s;
-  }
-  .back-btn:hover { color: var(--text); border-color: var(--purple); }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; line-height: 1.8; }
-  .lang-switch {
-    position: fixed; top: 20px; right: 24px;
-    display: flex; gap: 8px; z-index: 100;
-  }
-  .lang-btn {
-    padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border);
-    background: var(--surface); color: var(--muted); cursor: pointer;
-    font-size: 13px; font-family: 'Georgia', serif; transition: all 0.2s;
-  }
-  .lang-btn.active { background: var(--purple); color: white; border-color: var(--purple); }
-  .container { max-width: 720px; margin: 0 auto; padding: 80px 24px 120px; }
-  .badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--purple); background: linear-gradient(135deg, #7C3AED, #5B21B6);
-    color: white; padding: 6px 16px; border-radius: 20px;
-    font-size: 13px; letter-spacing: 0.05em; margin-bottom: 32px;
-  }
-  h1 { font-size: clamp(28px, 5vw, 42px); font-weight: normal; margin-bottom: 8px; line-height: 1.2; }
-  .subtitle { color: var(--muted); font-size: 15px; margin-bottom: 48px; }
-  .updated { color: var(--muted); font-size: 13px; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
-  h2 { font-size: 20px; font-weight: normal; color: var(--purple); margin: 48px 0 16px; letter-spacing: 0.02em; }
-  p { color: #C0C0D0; margin-bottom: 16px; font-size: 16px; }
-  ul { color: #C0C0D0; padding-left: 24px; margin-bottom: 16px; }
-  li { margin-bottom: 8px; font-size: 16px; }
-  a { color: var(--purple); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .contact-box {
-    margin-top: 48px; padding: 24px; background: var(--surface);
-    border: 1px solid var(--border); border-radius: 12px;
-  }
-  .contact-box p { margin: 0; }
-  [lang-section] { display: none; }
-  [lang-section].visible { display: block; }
+  :root { --bg:#0e0e12; --card:#17171d; --txt:#e7e7ea; --mut:#9a9aa5; --acc:#7c6cff; --line:#26262f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.65; }
+  .wrap { max-width:820px; margin:0 auto; padding:40px 22px 80px; }
+  header { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:32px; }
+  h1 { font-size:1.9rem; margin:0 0 6px; letter-spacing:-.02em; }
+  h2 { font-size:1.15rem; margin:36px 0 10px; color:#fff; letter-spacing:-.01em; }
+  h3 { font-size:1rem; margin:22px 0 6px; color:#fff; }
+  p, li { color:var(--txt); }
+  .mut { color:var(--mut); font-size:.92rem; }
+  a { color:var(--acc); }
+  .switch button { background:transparent; border:1px solid var(--line); color:var(--mut); padding:6px 12px; border-radius:999px; cursor:pointer; font-size:.85rem; }
+  .switch button.on { background:var(--acc); border-color:var(--acc); color:#fff; }
+  table { width:100%; border-collapse:collapse; margin:14px 0; font-size:.92rem; }
+  th, td { border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top; }
+  th { background:var(--card); color:#fff; font-weight:600; }
+  .note { background:var(--card); border-left:3px solid var(--acc); padding:14px 16px; border-radius:8px; margin:16px 0; }
+  [data-lang="en"] { display:none; }
+  footer { margin-top:48px; padding-top:20px; border-top:1px solid var(--line); }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<a href="landing-page.html" class="back-btn">← Retour au site</a>
+<header>
+  <div>
+    <h1>SeriesTracker</h1>
+    <div class="mut" data-lang="fr">Politique de confidentialité</div>
+    <div class="mut" data-lang="en">Privacy Policy</div>
+  </div>
+  <div class="switch">
+    <button id="btn-fr" class="on" onclick="setLang('fr')">FR</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</header>
 
-<div class="lang-switch">
-  <button class="lang-btn active" onclick="setLang('fr')">FR</button>
-  <button class="lang-btn" onclick="setLang('en')">EN</button>
+<!-- ============================ FRANÇAIS ============================ -->
+<div data-lang="fr">
+
+<p class="mut">Dernière mise à jour : 24 juillet 2026 — Version 2.0</p>
+
+<p>Cette politique explique quelles données SeriesTracker collecte, pourquoi, avec qui elles sont partagées et quels sont vos droits. Elle a été mise à jour pour couvrir les nouvelles fonctionnalités sociales de l'application (profils publics, amis, commentaires, fil d'activité).</p>
+
+<h2>1. Responsable du traitement</h2>
+<p>Le responsable du traitement est <strong>Martin Le Cué</strong>, éditeur de l'application SeriesTracker, agissant en qualité de personne physique depuis la France.</p>
+<p>Contact : <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a></p>
+<p class="mut">Aucun délégué à la protection des données (DPO) n'a été désigné, cette désignation n'étant pas obligatoire au regard de la nature et du volume des traitements réalisés.</p>
+
+<h2>2. Champ d'application</h2>
+<p>Cette politique s'applique à l'application mobile SeriesTracker sur iOS et à ses services associés. Elle ne s'applique pas aux services tiers auxquels vous pourriez accéder depuis l'application (plateformes de streaming, App Store), qui disposent de leurs propres politiques.</p>
+
+<h2>3. Données que nous collectons</h2>
+
+<h3>3.1 Données de compte</h3>
+<p>Adresse e-mail, prénom ou nom d'affichage, identifiant utilisateur unique généré par Firebase Authentication, et mot de passe (stocké de façon chiffrée par Firebase, jamais accessible en clair). Si vous utilisez « Se connecter avec Apple », Apple peut vous proposer de masquer votre adresse e-mail réelle ; dans ce cas nous ne recevons qu'une adresse relais fournie par Apple.</p>
+
+<h3>3.2 Profil public</h3>
+<p>Pseudonyme unique (@username), nom d'affichage, et selon votre choix soit une photo de profil que vous téléversez (stockée encodée en base64 dans notre base Firestore), soit un avatar généré à partir d'une icône et d'une couleur. Ces éléments sont visibles par les autres utilisateurs de l'application dans les contextes sociaux (recherche par pseudonyme, liste d'amis, commentaires, fil d'activité).</p>
+
+<h3>3.3 Découverte d'amis via votre carnet d'adresses</h3>
+<p>Si et seulement si vous y consentez explicitement via la boîte de dialogue système iOS, l'application accède à votre carnet de contacts pour vous suggérer des amis déjà présents sur SeriesTracker. Les adresses e-mail de vos contacts sont transformées localement sur votre appareil en empreintes cryptographiques (SHA-256) avant tout envoi. Nous ne stockons pas et ne recevons pas les adresses e-mail de vos contacts en clair, ni leurs noms, ni leurs numéros de téléphone. Votre propre adresse e-mail est elle aussi publiée sous forme d'empreinte hachée afin que vos contacts puissent vous retrouver.</p>
+<div class="note">
+<strong>À savoir.</strong> Une empreinte hachée reste une donnée à caractère personnel au sens du RGPD (il s'agit d'une pseudonymisation, non d'une anonymisation). Vous pouvez révoquer à tout moment l'accès aux contacts dans les réglages iOS, et nous demander la suppression des empreintes vous concernant. Nous vous invitons à n'activer cette fonction que si vous estimez légitime de partager ces empreintes au regard de vos relations avec vos contacts.
 </div>
 
-<div class="container">
+<h3>3.4 Relations sociales</h3>
+<p>Demandes d'amis envoyées et reçues, avec leur statut, et liste de vos amis acceptés.</p>
 
-  <!-- FRANÇAIS -->
-  <div lang-section="fr" class="visible">
-    <div class="badge">📺 SeriesTracker</div>
-    <h1>Politique de confidentialité</h1>
-    <p class="subtitle">Votre vie privée est notre priorité.</p>
-    <p class="updated">Dernière mise à jour : mars 2025</p>
+<h3>3.5 Fil d'activité partagé</h3>
+<p>Lorsque vous utilisez l'application, certains événements peuvent être partagés avec vos amis : séries et films commencés, terminés ou ajoutés à votre bibliothèque, épisodes marqués comme vus (avec leur code saison/épisode), notes attribuées, commentaires publiés, réactions, et l'horodatage de ces événements. Chaque événement contient votre nom d'affichage, votre pseudonyme et votre avatar.</p>
+<p>L'étendue de ce partage est contrôlée par vous via les réglages de confidentialité décrits à la section 3.9.</p>
 
-    <h2>1. Qui sommes-nous ?</h2>
-    <p>SeriesTracker est une application iOS développée et gérée par <strong>Martin Le Cué</strong>, à titre individuel. Pour toute question relative à vos données, contactez : <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a></p>
+<h3>3.6 Commentaires et contenus publiés</h3>
+<p>Texte de vos commentaires, indicateur « spoiler » éventuel, identifiant TMDB du contenu concerné, type de contenu (série ou film) et langue. Les commentaires font l'objet d'un filtrage automatique des propos injurieux.</p>
+<div class="note">
+<strong>Important.</strong> Les commentaires et le fil d'activité sont des contenus visibles par d'autres personnes. Ne publiez pas d'informations que vous ne souhaitez pas rendre accessibles à des tiers. Une fois partagé, un contenu peut avoir été vu, mémorisé ou capturé par d'autres utilisateurs, même après sa suppression de nos serveurs.
+</div>
 
-    <h2>2. Données collectées</h2>
-    <p>SeriesTracker collecte uniquement les données nécessaires au bon fonctionnement de l'application :</p>
-    <ul>
-      <li><strong>Adresse e-mail et mot de passe</strong> — pour créer et sécuriser votre compte (via Firebase Authentication)</li>
-      <li><strong>Données de visionnage</strong> — les séries ajoutées, épisodes vus, notes et évaluations que vous saisissez</li>
-      <li><strong>Données du mode Duo</strong> — si vous utilisez le mode Duo, votre progression et vos commentaires partagés sont visibles par votre partenaire uniquement</li>
-    </ul>
-    <p>Nous ne collectons pas de données de localisation, de contacts, ni d'informations financières.</p>
+<h3>3.7 Mode « Watch in Duo »</h3>
+<p>Partenariats établis entre deux utilisateurs, séries associées à ces partenariats, progression respective, commentaires partagés au sein du duo, et notifications de rappel (« nudge ») envoyées à un partenaire identifié.</p>
 
-    <h2>3. Comment vos données sont utilisées</h2>
-    <p>Vos données sont utilisées exclusivement pour :</p>
-    <ul>
-      <li>Synchroniser votre watchlist entre vos appareils</li>
-      <li>Permettre le partage de progression avec votre partenaire Duo</li>
-      <li>Vous envoyer des notifications que vous avez activées</li>
-    </ul>
-    <p>Vos données ne sont jamais vendues, revendues ou utilisées à des fins publicitaires.</p>
+<h3>3.8 Bibliothèque et usage</h3>
+<p>Séries et films ajoutés, statuts de visionnage, épisodes vus, notes, plateformes de streaming renseignées, historique de visionnage et statistiques associées. Ces données proviennent de vos actions dans l'application ; les métadonnées descriptives des œuvres (titres, affiches, synopsis) proviennent de l'API TMDB.</p>
 
-    <h2>4. Stockage et sécurité</h2>
-    <p>Vos données sont stockées sur les serveurs de <strong>Google Firebase</strong> (Firestore), hébergés en Europe. Firebase est certifié ISO 27001, SOC 1, SOC 2 et SOC 3. Les mots de passe sont chiffrés et jamais accessibles en clair.</p>
+<h3>3.9 Réglages de confidentialité</h3>
+<p>Vos préférences de partage, configurables catégorie par catégorie (visionnages, historique, collections, notes, plateformes, statistiques). Ces réglages déterminent ce que vos amis peuvent voir. Ils sont restrictifs par défaut : aucune catégorie n'est partagée tant que vous ne l'avez pas activée.</p>
 
-    <h2>5. Partage des données</h2>
-    <p>Vos données ne sont partagées avec aucun tiers, à l'exception des services techniques suivants, strictement nécessaires au fonctionnement de l'app :</p>
-    <ul>
-      <li><strong>Google Firebase</strong> — authentification et base de données</li>
-      <li><strong>The Movie Database (TMDB)</strong> — métadonnées des séries (affiches, descriptions). Seul l'identifiant de la série est transmis, aucune donnée personnelle.</li>
-    </ul>
+<h3>3.10 Modération</h3>
+<p>Blocages que vous effectuez, et signalements que vous émettez. Un signalement enregistre l'identifiant et le nom du signalant, l'identifiant et le nom de l'utilisateur signalé, ainsi que le motif invoqué.</p>
 
-    <h2>6. Vos droits</h2>
-    <p>Conformément au RGPD, vous disposez des droits suivants :</p>
-    <ul>
-      <li>Droit d'accès à vos données</li>
-      <li>Droit de rectification</li>
-      <li>Droit à l'effacement (suppression de compte)</li>
-      <li>Droit à la portabilité (export CSV disponible dans l'app)</li>
-    </ul>
-    <p>Pour exercer ces droits, contactez-nous à l'adresse ci-dessous.</p>
+<h3>3.11 Données techniques et d'abonnement</h3>
+<p>Identifiants d'appareil, données de diagnostic et de plantage, événements d'usage agrégés via Firebase Analytics, ainsi que le statut de votre abonnement Premium géré par RevenueCat. Nous ne recevons jamais vos coordonnées bancaires : les paiements sont traités exclusivement par Apple.</p>
 
-    <h2>7. Suppression du compte</h2>
-    <p>Vous pouvez supprimer votre compte et toutes vos données à tout moment depuis <strong>Profil → Supprimer mon compte</strong> dans l'application. La suppression est immédiate et irréversible.</p>
+<h2>4. Finalités et bases légales</h2>
+<table>
+<tr><th>Traitement</th><th>Finalité</th><th>Base légale (RGPD)</th></tr>
+<tr><td>Compte et authentification</td><td>Créer et sécuriser votre compte</td><td>Exécution du contrat (art. 6.1.b)</td></tr>
+<tr><td>Bibliothèque et suivi</td><td>Fournir la fonction principale de l'app</td><td>Exécution du contrat (art. 6.1.b)</td></tr>
+<tr><td>Profil public, amis, fil d'activité</td><td>Fournir les fonctionnalités sociales</td><td>Exécution du contrat (art. 6.1.b)</td></tr>
+<tr><td>Accès au carnet de contacts</td><td>Suggérer des amis</td><td>Consentement (art. 6.1.a) — révocable</td></tr>
+<tr><td>Commentaires et réactions</td><td>Permettre l'expression publique</td><td>Exécution du contrat (art. 6.1.b)</td></tr>
+<tr><td>Mode Duo</td><td>Synchroniser deux utilisateurs</td><td>Exécution du contrat (art. 6.1.b)</td></tr>
+<tr><td>Modération, blocage, signalement</td><td>Sécurité et respect des règles</td><td>Intérêt légitime (art. 6.1.f) et obligation légale</td></tr>
+<tr><td>Notifications push</td><td>Vous informer des nouveautés et de l'activité</td><td>Consentement (art. 6.1.a) — révocable</td></tr>
+<tr><td>Analytics et diagnostics</td><td>Améliorer et stabiliser l'app</td><td>Intérêt légitime (art. 6.1.f)</td></tr>
+<tr><td>Abonnements</td><td>Gérer l'accès Premium</td><td>Exécution du contrat (art. 6.1.b)</td></tr>
+</table>
 
-    <h2>8. Notifications</h2>
-    <p>Les notifications sont optionnelles et peuvent être désactivées à tout moment depuis <strong>Profil → Notifications</strong> ou depuis les Réglages de votre iPhone.</p>
+<h2>5. Destinataires et sous-traitants</h2>
+<p>Vos données ne sont ni vendues, ni louées, ni cédées à des fins publicitaires. Elles sont partagées uniquement avec les prestataires strictement nécessaires au fonctionnement du service.</p>
+<table>
+<tr><th>Prestataire</th><th>Rôle</th><th>Politique</th></tr>
+<tr><td>Google Firebase (Google Ireland Ltd.)</td><td>Authentification, base de données Firestore, analytics, notifications</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+<tr><td>RevenueCat, Inc.</td><td>Gestion des abonnements</td><td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></td></tr>
+<tr><td>Apple Inc.</td><td>Distribution, paiements, Sign in with Apple</td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a></td></tr>
+<tr><td>TMDB</td><td>Métadonnées des œuvres (aucune donnée personnelle transmise)</td><td><a href="https://www.themoviedb.org/privacy-policy" target="_blank" rel="noopener">themoviedb.org/privacy-policy</a></td></tr>
+</table>
+<p>Les autres utilisateurs de l'application sont également destinataires de certaines données, dans les limites que vous fixez par vos réglages de confidentialité : votre profil public est visible de tous les utilisateurs connectés, et votre activité partagée est visible de vos amis.</p>
 
-    <h2>9. Modifications</h2>
-    <p>Cette politique peut être mise à jour. En cas de modification substantielle, vous serez informé via l'application. La date de dernière mise à jour est indiquée en haut de cette page.</p>
+<h2>6. Transferts hors Union européenne</h2>
+<p>Certains de nos sous-traitants, notamment Google et RevenueCat, peuvent héberger ou traiter des données aux États-Unis. Ces transferts sont encadrés par les clauses contractuelles types de la Commission européenne et, le cas échéant, par le EU-U.S. Data Privacy Framework auquel ces sociétés adhèrent.</p>
 
-    <div class="contact-box">
-      <p>📬 <strong>Contact :</strong> <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a></p>
-    </div>
-  </div>
+<h2>7. Durées de conservation</h2>
+<table>
+<tr><th>Donnée</th><th>Durée</th></tr>
+<tr><td>Compte et bibliothèque</td><td>Tant que le compte est actif</td></tr>
+<tr><td>Compte inactif</td><td>Suppression après 36 mois sans connexion</td></tr>
+<tr><td>Données après suppression du compte</td><td>Suppression sous 30 jours</td></tr>
+<tr><td>Empreintes de contacts</td><td>Supprimées dès la révocation de l'accès ou la suppression du compte</td></tr>
+<tr><td>Commentaires et fil d'activité</td><td>Supprimés avec le compte</td></tr>
+<tr><td>Signalements</td><td>12 mois à compter du traitement</td></tr>
+<tr><td>Logs techniques et diagnostics</td><td>Selon les durées appliquées par Firebase (généralement 14 mois maximum)</td></tr>
+</table>
 
-  <!-- ENGLISH -->
-  <div lang-section="en">
-    <div class="badge">📺 SeriesTracker</div>
-    <h1>Privacy Policy</h1>
-    <p class="subtitle">Your privacy is our priority.</p>
-    <p class="updated">Last updated: March 2025</p>
+<h2>8. Vos droits</h2>
+<p>Conformément au RGPD, vous disposez d'un droit d'accès à vos données, de rectification, d'effacement, de limitation du traitement, d'opposition au traitement fondé sur l'intérêt légitime, et de portabilité. Vous pouvez également retirer à tout moment les consentements que vous avez donnés, sans que cela remette en cause la licéité des traitements antérieurs.</p>
+<p>Vous pouvez exercer une partie de ces droits directement dans l'application : modifier votre profil, ajuster vos réglages de confidentialité, exporter votre bibliothèque au format CSV, supprimer vos commentaires, ou supprimer votre compte. Pour toute autre demande, écrivez à <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a> ; nous répondons sous un mois.</p>
+<p>Si vous résidez en Californie, le CCPA vous ouvre des droits équivalents d'accès, de suppression et d'opposition à la vente de vos données. Nous ne vendons aucune donnée personnelle au sens du CCPA.</p>
+<p>Vous pouvez à tout moment introduire une réclamation auprès de la CNIL, autorité de contrôle française, via <a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>.</p>
 
-    <h2>1. Who are we?</h2>
-    <p>SeriesTracker is an iOS application developed and operated by <strong>Martin Le Cué</strong>, as an individual. For any questions about your data, contact: <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a></p>
+<h2>9. Suppression de votre compte</h2>
+<p>La suppression est accessible depuis l'application, dans la section Profil. Elle entraîne l'effacement de votre compte d'authentification, de votre profil, de votre bibliothèque, de vos relations sociales, de vos commentaires, de votre fil d'activité et des empreintes de contacts vous concernant.</p>
+<p>Certaines données peuvent subsister temporairement dans les sauvegardes techniques, jusqu'à leur rotation naturelle. Les signalements que vous avez émis à l'encontre d'autres utilisateurs peuvent être conservés à des fins de sécurité, sous une forme limitée aux éléments nécessaires.</p>
 
-    <h2>2. Data collected</h2>
-    <p>SeriesTracker only collects data necessary for the app to function:</p>
-    <ul>
-      <li><strong>Email address and password</strong> — to create and secure your account (via Firebase Authentication)</li>
-      <li><strong>Viewing data</strong> — the shows you add, episodes watched, notes and ratings you enter</li>
-      <li><strong>Duo mode data</strong> — if you use Duo mode, your progress and shared comments are visible to your partner only</li>
-    </ul>
-    <p>We do not collect location data, contacts, or financial information.</p>
+<h2>10. Âge minimum</h2>
+<p>SeriesTracker est réservée aux personnes âgées d'au moins <strong>16 ans</strong>. Nous ne collectons pas sciemment de données concernant des personnes plus jeunes. Si vous constatez qu'un mineur de moins de 16 ans utilise l'application, écrivez-nous et nous supprimerons son compte et ses données sans délai.</p>
 
-    <h2>3. How your data is used</h2>
-    <p>Your data is used exclusively to:</p>
-    <ul>
-      <li>Sync your watchlist across your devices</li>
-      <li>Enable progress sharing with your Duo partner</li>
-      <li>Send notifications you have enabled</li>
-    </ul>
-    <p>Your data is never sold, resold, or used for advertising purposes.</p>
+<h2>11. Modération et contenus publiés</h2>
+<p>Les contenus publiés par les utilisateurs font l'objet d'un filtrage automatique des propos injurieux. Vous pouvez bloquer un utilisateur, ce qui masque réciproquement vos contenus, et signaler un utilisateur ou un contenu. Les signalements sont examinés et les contenus contrevenant aux conditions d'utilisation sont retirés, le compte de leur auteur pouvant être suspendu ou supprimé.</p>
 
-    <h2>4. Storage and security</h2>
-    <p>Your data is stored on <strong>Google Firebase</strong> (Firestore) servers hosted in Europe. Firebase is ISO 27001, SOC 1, SOC 2, and SOC 3 certified. Passwords are encrypted and never accessible in plain text.</p>
+<h2>12. Sécurité</h2>
+<p>Les échanges avec nos serveurs sont chiffrés en transit (HTTPS/TLS). L'accès aux données est contrôlé par des règles de sécurité Firestore vérifiant l'authentification et les autorisations de chaque utilisateur. Les mots de passe sont gérés et chiffrés par Firebase Authentication. Aucun système n'étant infaillible, nous ne pouvons garantir une sécurité absolue.</p>
 
-    <h2>5. Data sharing</h2>
-    <p>Your data is not shared with any third parties, except for the following technical services strictly necessary for the app to function:</p>
-    <ul>
-      <li><strong>Google Firebase</strong> — authentication and database</li>
-      <li><strong>The Movie Database (TMDB)</strong> — show metadata (posters, descriptions). Only the show identifier is transmitted — no personal data.</li>
-    </ul>
+<h2>13. Modifications de cette politique</h2>
+<p>Cette politique peut évoluer. En cas de modification substantielle, notamment l'ajout d'une nouvelle catégorie de données ou d'une nouvelle finalité, vous en serez informé dans l'application ou par e-mail. La date de dernière mise à jour figure en haut de ce document.</p>
 
-    <h2>6. Your rights</h2>
-    <p>Under GDPR, you have the following rights:</p>
-    <ul>
-      <li>Right of access to your data</li>
-      <li>Right of rectification</li>
-      <li>Right to erasure (account deletion)</li>
-      <li>Right to data portability (CSV export available in the app)</li>
-    </ul>
-    <p>To exercise these rights, contact us at the address below.</p>
+<h2>14. Contact</h2>
+<p>Pour toute question relative à cette politique ou à vos données : <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a></p>
 
-    <h2>7. Account deletion</h2>
-    <p>You can delete your account and all your data at any time from <strong>Profile → Delete my account</strong> in the app. Deletion is immediate and irreversible.</p>
+<p class="mut">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
 
-    <h2>8. Notifications</h2>
-    <p>Notifications are optional and can be disabled at any time from <strong>Profile → Notifications</strong> or from your iPhone Settings.</p>
+</div>
 
-    <h2>9. Changes</h2>
-    <p>This policy may be updated. In case of substantial changes, you will be notified via the app. The last update date is shown at the top of this page.</p>
+<!-- ============================ ENGLISH ============================ -->
+<div data-lang="en">
 
-    <div class="contact-box">
-      <p>📬 <strong>Contact:</strong> <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a></p>
-    </div>
-  </div>
+<p class="mut">Last updated: July 24, 2026 — Version 2.0</p>
+
+<p>This policy explains what data SeriesTracker collects, why, who it is shared with, and what your rights are. It has been updated to cover the app's new social features (public profiles, friends, comments, activity feed).</p>
+
+<h2>1. Data controller</h2>
+<p>The data controller is <strong>Martin Le Cué</strong>, publisher of the SeriesTracker application, acting as a natural person based in France.</p>
+<p>Contact: <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a></p>
+<p class="mut">No Data Protection Officer has been appointed, as this is not required given the nature and scale of the processing carried out.</p>
+
+<h2>2. Scope</h2>
+<p>This policy applies to the SeriesTracker iOS application and its associated services. It does not apply to third-party services you may access from the app (streaming platforms, the App Store), which have their own policies.</p>
+
+<h2>3. Data we collect</h2>
+
+<h3>3.1 Account data</h3>
+<p>Email address, first name or display name, unique user identifier generated by Firebase Authentication, and password (stored encrypted by Firebase, never accessible in plain text). If you use "Sign in with Apple", Apple may offer to hide your real email address; in that case we only receive a relay address provided by Apple.</p>
+
+<h3>3.2 Public profile</h3>
+<p>Unique username (@username), display name, and either a profile picture you upload (stored base64-encoded in our Firestore database) or an avatar generated from an icon and a colour. These elements are visible to other users of the app in social contexts (username search, friend lists, comments, activity feed).</p>
+
+<h3>3.3 Friend discovery via your address book</h3>
+<p>If and only if you explicitly consent through the iOS system dialog, the app accesses your contacts to suggest friends already using SeriesTracker. Your contacts' email addresses are converted locally on your device into cryptographic hashes (SHA-256) before any transmission. We neither store nor receive your contacts' email addresses in plain text, nor their names or phone numbers. Your own email address is likewise published as a hash so that your contacts can find you.</p>
+<div class="note">
+<strong>Please note.</strong> A hash remains personal data under the GDPR (this is pseudonymisation, not anonymisation). You can revoke contacts access at any time in your iOS settings, and ask us to delete the hashes relating to you. We encourage you to enable this feature only if you consider it appropriate to share these hashes given your relationship with your contacts.
+</div>
+
+<h3>3.4 Social relationships</h3>
+<p>Friend requests sent and received, with their status, and your list of accepted friends.</p>
+
+<h3>3.5 Shared activity feed</h3>
+<p>As you use the app, certain events may be shared with your friends: shows and films started, completed or added to your library, episodes marked as watched (with their season/episode code), ratings given, comments published, reactions, and the timestamp of these events. Each event includes your display name, username and avatar.</p>
+<p>The extent of this sharing is controlled by you through the privacy settings described in section 3.9.</p>
+
+<h3>3.6 Comments and published content</h3>
+<p>The text of your comments, an optional "spoiler" flag, the TMDB identifier of the title concerned, the content type (show or film) and the language. Comments are subject to automatic filtering of offensive language.</p>
+<div class="note">
+<strong>Important.</strong> Comments and the activity feed are content visible to other people. Do not publish information you would not want third parties to access. Once shared, content may have been seen, saved or captured by other users, even after it is deleted from our servers.
+</div>
+
+<h3>3.7 "Watch in Duo" mode</h3>
+<p>Partnerships established between two users, shows linked to those partnerships, each partner's progress, comments shared within the duo, and reminder ("nudge") notifications sent to an identified partner.</p>
+
+<h3>3.8 Library and usage</h3>
+<p>Shows and films added, watch statuses, episodes watched, ratings, streaming platforms recorded, watch history and related statistics. This data comes from your actions in the app; descriptive metadata about the titles (names, posters, synopses) comes from the TMDB API.</p>
+
+<h3>3.9 Privacy settings</h3>
+<p>Your sharing preferences, configurable category by category (watches, history, collections, ratings, platforms, statistics). These settings determine what your friends can see. They are restrictive by default: no category is shared until you enable it.</p>
+
+<h3>3.10 Moderation</h3>
+<p>Blocks you apply, and reports you submit. A report records the identifier and name of the reporter, the identifier and name of the reported user, and the stated reason.</p>
+
+<h3>3.11 Technical and subscription data</h3>
+<p>Device identifiers, diagnostic and crash data, aggregated usage events via Firebase Analytics, and the status of your Premium subscription managed by RevenueCat. We never receive your payment details: payments are processed exclusively by Apple.</p>
+
+<h2>4. Purposes and legal bases</h2>
+<table>
+<tr><th>Processing</th><th>Purpose</th><th>Legal basis (GDPR)</th></tr>
+<tr><td>Account and authentication</td><td>Create and secure your account</td><td>Performance of contract (art. 6.1.b)</td></tr>
+<tr><td>Library and tracking</td><td>Provide the app's core function</td><td>Performance of contract (art. 6.1.b)</td></tr>
+<tr><td>Public profile, friends, activity feed</td><td>Provide social features</td><td>Performance of contract (art. 6.1.b)</td></tr>
+<tr><td>Contacts access</td><td>Suggest friends</td><td>Consent (art. 6.1.a) — revocable</td></tr>
+<tr><td>Comments and reactions</td><td>Enable public expression</td><td>Performance of contract (art. 6.1.b)</td></tr>
+<tr><td>Duo mode</td><td>Synchronise two users</td><td>Performance of contract (art. 6.1.b)</td></tr>
+<tr><td>Moderation, blocking, reporting</td><td>Safety and rule enforcement</td><td>Legitimate interest (art. 6.1.f) and legal obligation</td></tr>
+<tr><td>Push notifications</td><td>Inform you of new content and activity</td><td>Consent (art. 6.1.a) — revocable</td></tr>
+<tr><td>Analytics and diagnostics</td><td>Improve and stabilise the app</td><td>Legitimate interest (art. 6.1.f)</td></tr>
+<tr><td>Subscriptions</td><td>Manage Premium access</td><td>Performance of contract (art. 6.1.b)</td></tr>
+</table>
+
+<h2>5. Recipients and processors</h2>
+<p>Your data is never sold, rented or transferred for advertising purposes. It is shared only with the providers strictly necessary to operate the service.</p>
+<table>
+<tr><th>Provider</th><th>Role</th><th>Policy</th></tr>
+<tr><td>Google Firebase (Google Ireland Ltd.)</td><td>Authentication, Firestore database, analytics, notifications</td><td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></td></tr>
+<tr><td>RevenueCat, Inc.</td><td>Subscription management</td><td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></td></tr>
+<tr><td>Apple Inc.</td><td>Distribution, payments, Sign in with Apple</td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a></td></tr>
+<tr><td>TMDB</td><td>Title metadata (no personal data transmitted)</td><td><a href="https://www.themoviedb.org/privacy-policy" target="_blank" rel="noopener">themoviedb.org/privacy-policy</a></td></tr>
+</table>
+<p>Other users of the app are also recipients of certain data, within the limits you set through your privacy settings: your public profile is visible to all signed-in users, and your shared activity is visible to your friends.</p>
+
+<h2>6. Transfers outside the European Union</h2>
+<p>Some of our processors, notably Google and RevenueCat, may host or process data in the United States. These transfers are governed by the European Commission's Standard Contractual Clauses and, where applicable, by the EU-U.S. Data Privacy Framework to which these companies adhere.</p>
+
+<h2>7. Retention periods</h2>
+<table>
+<tr><th>Data</th><th>Period</th></tr>
+<tr><td>Account and library</td><td>As long as the account is active</td></tr>
+<tr><td>Inactive account</td><td>Deleted after 36 months without sign-in</td></tr>
+<tr><td>Data after account deletion</td><td>Deleted within 30 days</td></tr>
+<tr><td>Contact hashes</td><td>Deleted upon revocation of access or account deletion</td></tr>
+<tr><td>Comments and activity feed</td><td>Deleted with the account</td></tr>
+<tr><td>Reports</td><td>12 months from processing</td></tr>
+<tr><td>Technical logs and diagnostics</td><td>Per Firebase retention periods (generally 14 months maximum)</td></tr>
+</table>
+
+<h2>8. Your rights</h2>
+<p>Under the GDPR, you have the right to access your data, to rectification, erasure, restriction of processing, objection to processing based on legitimate interest, and data portability. You may also withdraw any consent you have given at any time, without affecting the lawfulness of prior processing.</p>
+<p>You can exercise some of these rights directly in the app: edit your profile, adjust your privacy settings, export your library as CSV, delete your comments, or delete your account. For any other request, write to <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a>; we respond within one month.</p>
+<p>If you are a California resident, the CCPA grants you equivalent rights of access, deletion and opt-out from the sale of your data. We do not sell any personal data within the meaning of the CCPA.</p>
+<p>You may lodge a complaint at any time with the CNIL, the French supervisory authority, at <a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>.</p>
+
+<h2>9. Deleting your account</h2>
+<p>Deletion is available in the app, in the Profile section. It erases your authentication account, your profile, your library, your social relationships, your comments, your activity feed and the contact hashes relating to you.</p>
+<p>Some data may temporarily remain in technical backups until their natural rotation. Reports you have submitted against other users may be retained for safety purposes, limited to the elements necessary.</p>
+
+<h2>10. Minimum age</h2>
+<p>SeriesTracker is restricted to people aged <strong>16 or over</strong>. We do not knowingly collect data relating to younger individuals. If you become aware that a minor under 16 is using the app, please write to us and we will delete their account and data without delay.</p>
+
+<h2>11. Moderation and published content</h2>
+<p>User-published content is subject to automatic filtering of offensive language. You can block a user, which mutually hides your content, and report a user or a piece of content. Reports are reviewed and content breaching the Terms of Use is removed, with the author's account liable to suspension or deletion.</p>
+
+<h2>12. Security</h2>
+<p>Exchanges with our servers are encrypted in transit (HTTPS/TLS). Data access is controlled by Firestore security rules verifying each user's authentication and permissions. Passwords are managed and encrypted by Firebase Authentication. As no system is infallible, we cannot guarantee absolute security.</p>
+
+<h2>13. Changes to this policy</h2>
+<p>This policy may change. In the event of a substantial modification, in particular the addition of a new category of data or a new purpose, you will be informed in the app or by email. The last updated date appears at the top of this document.</p>
+
+<h2>14. Contact</h2>
+<p>For any question about this policy or your data: <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a></p>
+
+<p class="mut">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+
+</div>
+
+<footer class="mut">© 2026 Martin Le Cué — SeriesTracker</footer>
 
 </div>
 
 <script>
-function setLang(lang) {
-  document.querySelectorAll('[lang-section]').forEach(el => {
-    el.classList.toggle('visible', el.getAttribute('lang-section') === lang);
+function setLang(l){
+  document.querySelectorAll('[data-lang]').forEach(function(el){
+    el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none';
   });
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
-  });
+  document.getElementById('btn-fr').classList.toggle('on', l === 'fr');
+  document.getElementById('btn-en').classList.toggle('on', l === 'en');
+  document.documentElement.lang = l;
+  try { localStorage.setItem('st_lang', l); } catch(e) {}
 }
+var saved = 'fr';
+try { saved = localStorage.getItem('st_lang') || (navigator.language || '').toLowerCase().indexOf('fr') === 0 ? (localStorage.getItem('st_lang') || 'fr') : 'en'; } catch(e) {}
+setLang(saved === 'en' ? 'en' : 'fr');
 </script>
+
 </body>
 </html>
