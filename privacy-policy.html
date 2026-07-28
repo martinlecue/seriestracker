@@ -302,16 +302,30 @@
 <script>
 function setLang(l){
   document.querySelectorAll('[data-lang]').forEach(function(el){
-    el.style.display = (el.getAttribute('data-lang') === l) ? '' : 'none';
+    // FIX : on force une valeur d'affichage explicite ('block') au lieu de ''
+    // ('' retombait sur la règle CSS [data-lang="en"]{display:none} et laissait la page vide)
+    el.style.display = (el.getAttribute('data-lang') === l) ? 'block' : 'none';
   });
   document.getElementById('btn-fr').classList.toggle('on', l === 'fr');
   document.getElementById('btn-en').classList.toggle('on', l === 'en');
   document.documentElement.lang = l;
   try { localStorage.setItem('st_lang', l); } catch(e) {}
 }
+
+// Détection de la langue au chargement (priorité corrigée)
 var saved = 'fr';
-try { saved = localStorage.getItem('st_lang') || (navigator.language || '').toLowerCase().indexOf('fr') === 0 ? (localStorage.getItem('st_lang') || 'fr') : 'en'; } catch(e) {}
-setLang(saved === 'en' ? 'en' : 'fr');
+try {
+  var stored = localStorage.getItem('st_lang');
+  if (stored === 'fr' || stored === 'en') {
+    saved = stored;                       // 1) préférence déjà enregistrée
+  } else if ((navigator.language || '').toLowerCase().indexOf('fr') === 0) {
+    saved = 'fr';                         // 2) navigateur en français
+  } else {
+    saved = 'en';                         // 3) sinon anglais
+  }
+} catch(e) { saved = 'fr'; }
+
+setLang(saved);
 </script>
 
 </body>
