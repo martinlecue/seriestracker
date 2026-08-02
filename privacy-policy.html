@@ -44,7 +44,7 @@
 <!-- ============================ FRANÇAIS ============================ -->
 <div data-lang="fr">
 
-<p class="mut">Dernière mise à jour : 24 juillet 2026 — Version 2.0</p>
+<p class="mut">Dernière mise à jour : 28 juillet 2026 — Version 2.1</p>
 
 <p>Cette politique explique quelles données SeriesTracker collecte, pourquoi, avec qui elles sont partagées et quels sont vos droits. Elle a été mise à jour pour couvrir les nouvelles fonctionnalités sociales de l'application (profils publics, amis, commentaires, fil d'activité).</p>
 
@@ -111,6 +111,7 @@
 <tr><td>Notifications push</td><td>Vous informer des nouveautés et de l'activité</td><td>Consentement (art. 6.1.a) — révocable</td></tr>
 <tr><td>Analytics et diagnostics</td><td>Améliorer et stabiliser l'app</td><td>Intérêt légitime (art. 6.1.f)</td></tr>
 <tr><td>Abonnements</td><td>Gérer l'accès Premium</td><td>Exécution du contrat (art. 6.1.b)</td></tr>
+<tr><td>E-mails marketing (séquence d'accueil, newsletter)</td><td>Vous adresser des communications marketing (voir section 15)</td><td>Consentement (art. 6.1.a) — révocable</td></tr>
 </table>
 
 <h2>5. Destinataires et sous-traitants</h2>
@@ -121,6 +122,7 @@
 <tr><td>RevenueCat, Inc.</td><td>Gestion des abonnements</td><td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></td></tr>
 <tr><td>Apple Inc.</td><td>Distribution, paiements, Sign in with Apple</td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a></td></tr>
 <tr><td>TMDB</td><td>Métadonnées des œuvres (aucune donnée personnelle transmise)</td><td><a href="https://www.themoviedb.org/privacy-policy" target="_blank" rel="noopener">themoviedb.org/privacy-policy</a></td></tr>
+<tr><td>Brevo (Sendinblue)</td><td>Envoi et gestion des e-mails marketing (séquence d'accueil, newsletter) — voir section 15</td><td><a href="https://www.brevo.com/fr/legal/privacypolicy/" target="_blank" rel="noopener">brevo.com/fr/legal/privacypolicy</a></td></tr>
 </table>
 <p>Les autres utilisateurs de l'application sont également destinataires de certaines données, dans les limites que vous fixez par vos réglages de confidentialité : votre profil public est visible de tous les utilisateurs connectés, et votre activité partagée est visible de vos amis.</p>
 
@@ -137,6 +139,7 @@
 <tr><td>Commentaires et fil d'activité</td><td>Supprimés avec le compte</td></tr>
 <tr><td>Signalements</td><td>12 mois à compter du traitement</td></tr>
 <tr><td>Logs techniques et diagnostics</td><td>Selon les durées appliquées par Firebase (généralement 14 mois maximum)</td></tr>
+<tr><td>Données transmises à Brevo (e-mail, prénom/pseudo, date d'inscription)</td><td>Suppression sous 30 jours après désinscription ou suppression du compte</td></tr>
 </table>
 
 <h2>8. Vos droits</h2>
@@ -164,6 +167,28 @@
 <h2>14. Contact</h2>
 <p>Pour toute question relative à cette politique ou à vos données : <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a></p>
 
+<h2>15. E-mails marketing</h2>
+<p>Avec votre consentement préalable, explicite et distinct de la création de votre compte, nous vous envoyons des e-mails marketing. Ce consentement n'est <strong>pas nécessaire au fonctionnement de l'application ni de votre compte</strong> : vous pouvez utiliser SeriesTracker pleinement sans y consentir, et un refus n'a aucune incidence sur votre accès au service.</p>
+
+<h3>15.1 Types d'e-mails et recueil du consentement</h3>
+<p>Nous distinguons deux traitements, chacun soumis à un consentement propre :</p>
+<ul>
+<li><strong>Séquence d'accueil (onboarding)</strong> : une série d'e-mails automatiques envoyés sur vos premiers jours d'utilisation. Elle n'est déclenchée que si vous l'activez, soit via un réglage (« toggle ») dans l'application, soit via une fenêtre de consentement présentée après plusieurs sessions d'usage — jamais lors de la première ouverture de l'application.</li>
+<li><strong>Newsletter</strong> : des e-mails récurrents consacrés aux nouveautés produit. Le consentement à la newsletter est <strong>séparé et indépendant</strong> de celui de la séquence d'accueil : vous pouvez accepter l'un sans l'autre.</li>
+</ul>
+
+<h3>15.2 Base légale</h3>
+<p>Ces envois reposent exclusivement sur votre <strong>consentement</strong> (article 6.1.a du RGPD), recueilli séparément pour chaque type d'e-mail. Ce consentement est <strong>distinct de celui nécessaire au fonctionnement de votre compte</strong> (lequel relève de l'exécution du contrat, voir section 4) et il est <strong>librement révocable à tout moment</strong>, sans que ce retrait ne remette en cause la licéité des envois effectués auparavant.</p>
+
+<h3>15.3 Preuve et enregistrement du consentement</h3>
+<p>Votre choix (consentement ou refus) est enregistré dans notre base Firestore, champ par champ pour chaque type d'e-mail, avec un horodatage, afin de pouvoir démontrer la validité et la date de votre consentement.</p>
+
+<h3>15.4 Données transmises et sous-traitant</h3>
+<p>À cette seule fin, nous transmettons uniquement votre <strong>adresse e-mail, votre prénom ou pseudonyme et votre date d'inscription</strong> à notre sous-traitant <strong>Brevo (anciennement Sendinblue)</strong>, société française chargée de l'envoi et de la gestion des contacts e-mail marketing (voir le tableau de la section 5). Aucune autre donnée n'est transmise à Brevo à cette fin.</p>
+
+<h3>15.5 Se désinscrire</h3>
+<p>Vous pouvez vous désinscrire à tout moment, gratuitement : soit via le lien de désinscription présent dans chaque e-mail, soit en désactivant le réglage correspondant dans l'application. La désinscription est prise en compte sans délai ; les données correspondantes transmises à Brevo sont supprimées dans les conditions indiquées au tableau des durées de conservation (section 7).</p>
+
 <p class="mut">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
 
 </div>
@@ -171,7 +196,7 @@
 <!-- ============================ ENGLISH ============================ -->
 <div data-lang="en">
 
-<p class="mut">Last updated: July 24, 2026 — Version 2.0</p>
+<p class="mut">Last updated: July 28, 2026 — Version 2.1</p>
 
 <p>This policy explains what data SeriesTracker collects, why, who it is shared with, and what your rights are. It has been updated to cover the app's new social features (public profiles, friends, comments, activity feed).</p>
 
@@ -238,6 +263,7 @@
 <tr><td>Push notifications</td><td>Inform you of new content and activity</td><td>Consent (art. 6.1.a) — revocable</td></tr>
 <tr><td>Analytics and diagnostics</td><td>Improve and stabilise the app</td><td>Legitimate interest (art. 6.1.f)</td></tr>
 <tr><td>Subscriptions</td><td>Manage Premium access</td><td>Performance of contract (art. 6.1.b)</td></tr>
+<tr><td>Marketing emails (onboarding sequence, newsletter)</td><td>Send you marketing communications (see section 15)</td><td>Consent (art. 6.1.a) — revocable</td></tr>
 </table>
 
 <h2>5. Recipients and processors</h2>
@@ -248,6 +274,7 @@
 <tr><td>RevenueCat, Inc.</td><td>Subscription management</td><td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></td></tr>
 <tr><td>Apple Inc.</td><td>Distribution, payments, Sign in with Apple</td><td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a></td></tr>
 <tr><td>TMDB</td><td>Title metadata (no personal data transmitted)</td><td><a href="https://www.themoviedb.org/privacy-policy" target="_blank" rel="noopener">themoviedb.org/privacy-policy</a></td></tr>
+<tr><td>Brevo (Sendinblue)</td><td>Marketing email delivery and contact management (onboarding sequence, newsletter) — see section 15</td><td><a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener">brevo.com/legal/privacypolicy</a></td></tr>
 </table>
 <p>Other users of the app are also recipients of certain data, within the limits you set through your privacy settings: your public profile is visible to all signed-in users, and your shared activity is visible to your friends.</p>
 
@@ -264,6 +291,7 @@
 <tr><td>Comments and activity feed</td><td>Deleted with the account</td></tr>
 <tr><td>Reports</td><td>12 months from processing</td></tr>
 <tr><td>Technical logs and diagnostics</td><td>Per Firebase retention periods (generally 14 months maximum)</td></tr>
+<tr><td>Data shared with Brevo (email, first name/nickname, sign-up date)</td><td>Deleted within 30 days after unsubscribing or account deletion</td></tr>
 </table>
 
 <h2>8. Your rights</h2>
@@ -290,6 +318,28 @@
 
 <h2>14. Contact</h2>
 <p>For any question about this policy or your data: <a href="mailto:martin.lecue@gmail.com">martin.lecue@gmail.com</a></p>
+
+<h2>15. Marketing emails</h2>
+<p>With your prior, explicit consent, separate from the creation of your account, we send you marketing emails. This consent is <strong>not required to use the app or your account</strong>: you can use SeriesTracker fully without opting in, and declining has no impact on your access to the service.</p>
+
+<h3>15.1 Email types and how consent is collected</h3>
+<p>We distinguish two processing activities, each subject to its own consent:</p>
+<ul>
+<li><strong>Onboarding sequence</strong>: a series of automated emails sent over your first days of use. It is only triggered if you enable it, either via a setting ("toggle") in the app or via a consent prompt shown after several usage sessions — never on the first launch of the app.</li>
+<li><strong>Newsletter</strong>: recurring emails dedicated to product updates. Consent to the newsletter is <strong>separate from and independent of</strong> consent to the onboarding sequence: you may accept one without the other.</li>
+</ul>
+
+<h3>15.2 Legal basis</h3>
+<p>These emails rely exclusively on your <strong>consent</strong> (Article 6(1)(a) GDPR), collected separately for each email type. This consent is <strong>distinct from the consent required for your account to function</strong> (which is based on performance of the contract, see section 4) and is <strong>freely revocable at any time</strong>, without affecting the lawfulness of emails sent before withdrawal.</p>
+
+<h3>15.3 Proof and record of consent</h3>
+<p>Your choice (consent or refusal) is recorded in our Firestore database, field by field for each email type, with a timestamp, so that the validity and date of your consent can be demonstrated.</p>
+
+<h3>15.4 Data shared and processor</h3>
+<p>For this sole purpose, we share only your <strong>email address, first name or nickname and sign-up date</strong> with our processor <strong>Brevo (formerly Sendinblue)</strong>, a French company responsible for marketing email delivery and contact management (see the table in section 5). No other data is shared with Brevo for this purpose.</p>
+
+<h3>15.5 Unsubscribing</h3>
+<p>You can unsubscribe at any time, free of charge: either via the unsubscribe link included in every email, or by turning off the corresponding setting in the app. Unsubscribing takes effect without delay; the corresponding data shared with Brevo is deleted under the conditions set out in the retention periods table (section 7).</p>
 
 <p class="mut">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
 
